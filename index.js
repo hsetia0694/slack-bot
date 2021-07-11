@@ -2,7 +2,7 @@ const request = require('request-promise');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const WEBHOOK = 'https://hooks.slack.com/services/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';
+const WEBHOOK = 'https://hooks.slack.com/services/';
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ app.post('/slack', (req, res) => {
     const response = request({
         method: 'POST',
         body: body,
-        url: WEBHOOK,
+        url: WEBHOOK + process.env.ACCESS_KEY,
         json: true
     })
 
